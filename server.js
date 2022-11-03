@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 const WebSocket = require("ws");
-
+const port = process.env.PORT || 3000;
 const wss = new WebSocket.Server({ server: server });
 
 wss.on("connection", function connection(ws) {
@@ -23,4 +23,4 @@ wss.on("connection", function connection(ws) {
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
-server.listen(3000, () => console.log("Listening on port:3000"));
+server.listen(port, () => console.log("Listening on port:3000"));
